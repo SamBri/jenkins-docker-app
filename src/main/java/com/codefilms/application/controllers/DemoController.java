@@ -17,7 +17,7 @@ public class DemoController {
 	@GetMapping(value="/greetings",produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sayHello() {
 		
-		return new ResponseEntity<String>(new JSONObject().put("greetings", "Hello").toString(), HttpStatus.OK);
+		return new ResponseEntity<String>(new JSONObject().put("greetings", "Hello world").toString(), HttpStatus.OK);
 	}
 	
 	

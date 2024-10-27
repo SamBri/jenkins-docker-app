@@ -14,8 +14,15 @@ pipeline {
       }
       
       stage('Deploy') {
- 
-         
+         when {
+            expression {
+               currentBuild.result == null || currentBuild.result == 'SUCCESS'
+            }
+         }
+         steps {
+            echo 'Deploying stage'
+            bat  'java -jar ${currentBuild.name}.war --httpPort=8082'
+         }
       }
       
    }

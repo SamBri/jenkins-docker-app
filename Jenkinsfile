@@ -1,3 +1,4 @@
+// Jenkinsfile (Declarative Pipeline)
 pipeline {
    agent any
    
@@ -13,15 +14,16 @@ pipeline {
       }
       
       stage('Deploy') {
-         steps {
-            when {
-               expression {
-                  currentBuild.result == null || currentBuild.result == 'SUCCESS'
-                  
-                  echo 'Deploying stage'
-                  bat  'java -jar ${currentBuild.name}.war --httpPort=8082'
-               }
+         when {
+            expression {
+               currentBuild.result == null || currentBuild.result == 'SUCCESS'
             }
+            
+            steps {
+               echo 'Deploying stage'
+               bat  'java -jar ${currentBuild.name}.war --httpPort=8082'
+            }
+             
          }
          
          

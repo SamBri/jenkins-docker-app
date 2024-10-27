@@ -6,14 +6,14 @@ pipeline {
       stage('Build') {
          steps {
             echo 'Building stage'
-            bat 'mvn clean'
+         //   bat 'mvn clean'
             bat 'mvn compile'
             bat 'mvn package'
             
          }
       }
       
-  /*   stage('Deploy') {
+      stage('Deploy') {
          when {
             expression {
                currentBuild.result == null || currentBuild.result == 'SUCCESS'
@@ -24,7 +24,7 @@ pipeline {
             bat  'cd target'
             bat  'java -jar ${currentBuild.name}.war --httpPort=8082'
          }
-      } */
+      }
       
    }
    

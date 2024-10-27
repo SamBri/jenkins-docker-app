@@ -1,5 +1,7 @@
 package com.codefilms.application.controllers;
 
+import java.time.LocalDateTime;
+
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,7 +19,7 @@ public class DemoController {
 	@GetMapping(value="/greetings",produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sayHello() {
 		
-		return new ResponseEntity<String>(new JSONObject().put("greetings", "Hello world").toString(), HttpStatus.OK);
+		return new ResponseEntity<String>(new JSONObject().put("greetings", "Hello world :: " + LocalDateTime.now()).toString(), HttpStatus.OK);
 	}
 	
 	

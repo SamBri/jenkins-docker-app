@@ -4,10 +4,10 @@ pipeline {
    stages {
       stage('Build') {
          steps {
-            echo 'Building stage..'
-            sh 'mvn clean'
-            sh 'mvn compile'
-            sh 'mvn package'
+            echo 'Building stage'
+            bat 'mvn clean'
+            bat 'mvn compile'
+            bat 'mvn package'
             
          }
       }

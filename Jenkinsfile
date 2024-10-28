@@ -22,7 +22,7 @@ pipeline {
          }
          steps {
             echo 'Deploying stage'
-            bat  'java -jar target/application-1.0.war --httpPort=8082'
+            bat  'java -jar target/application-1.0.jar'
          }
       }
       

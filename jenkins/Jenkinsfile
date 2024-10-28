@@ -13,7 +13,7 @@ pipeline {
          }
       }
       
-      stage('Deploy') {
+      stage('Deliver') {
          when {
             expression {
                currentBuild.result == null || currentBuild.result == 'SUCCESS'
@@ -22,6 +22,7 @@ pipeline {
          
          steps {
             echo 'Deploying stage'
+             
           /* echo '${params.BUILD_NAME}'
             bat  'java -jar target/application-1.0.jar' */
          }

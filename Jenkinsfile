@@ -2,11 +2,15 @@
 pipeline {
    agent any
    
+   parameters {
+      string(name: 'BUILD_NAME', defaultValue: currentBuild.name)
+   }
+   
    stages {
       stage('Build') {
          steps {
             echo 'Building stage'
-         //   bat 'mvn clean' // no clean stage
+            //   bat 'mvn clean' // no clean stage
             bat 'mvn compile'
             bat 'mvn package'
             
@@ -22,8 +26,8 @@ pipeline {
          steps {
             echo 'Deploying stage'
             def buildName = currentBuild.name
-            echo 'App buildName ${buildName}'
-          //  bat  'java -jar target/${currentBuild.name}.war --httpPort=8082'
+            echo 'App buildName ${BUILD_NAME}'
+            //  bat  'java -jar target/${currentBuild.name}.war --httpPort=8082'
          }
       }
       

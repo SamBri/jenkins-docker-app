@@ -22,8 +22,11 @@ pipeline {
          
          steps {
             echo 'Deploying stage'
-             
-          /* echo '${params.BUILD_NAME}'
+            
+            bat 'sh ./jenkins/scripts/deliver.sh'
+            
+            
+            /* echo '${params.BUILD_NAME}'
             bat  'java -jar target/application-1.0.jar' */
          }
       }

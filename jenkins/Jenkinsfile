@@ -20,7 +20,7 @@ pipeline {
             }
          }
          
-         // jenkins ssh --
+         // jenkins over ssh --
          steps {
             echo 'delivering app for deployment.'
             sh 'scp ./target/application-1.0.jar appuser@192.168.0.190:/home/appuser/apps/'

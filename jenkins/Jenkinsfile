@@ -31,8 +31,22 @@ pipeline {
             
             
          }
+         
+         
+      }
+      
+      
+      stage('End') {
+         
+         
+         steps {
+            echo 'done with deployment'
+            sh 'echo "done"'
+            sh 'exit'
+            
+            
+            
+         }
       }
       
    }
-   
-}

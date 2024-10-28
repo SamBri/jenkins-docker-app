@@ -31,8 +31,8 @@ pipeline {
             // get version
             sh'set VERSION=`mvn -q -DforceStdout help:evaluate -Dexpression=project.version`'
             
-            sh 'echo ${NAME}'
-            sh 'echo ${VERSION}'
+            sh 'echo $NAME'
+            sh 'echo $VERSION'
             
             sh 'scp ./target/${NAME}-${VERSION}.jar appuser@192.168.0.190:/home/appuser/apps/'
             sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/${NAME}-${VERSION}.jar > /dev/null 2>&1 &"'

@@ -23,7 +23,7 @@ pipeline {
          steps {
             echo 'Deploying stage'
             
-            sh './jenkins/scripts/deliver.sh'
+            bat 'sh ./jenkins/scripts/deliver.sh'
             
             
             /* echo '${params.BUILD_NAME}'

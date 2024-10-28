@@ -20,7 +20,7 @@ pipeline {
             }
          }
          
-         // app
+         // unset
          steps {
             echo 'delivering app for deployment'
             sh 'scp -i /home/appuser/.ssh/id_rsa.pub ./target/application-1.0.jar appuser@192.168.0.190:/apps/'

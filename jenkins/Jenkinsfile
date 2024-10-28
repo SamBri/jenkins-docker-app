@@ -25,10 +25,7 @@ pipeline {
             
             //run script
             bat '.\\jenkins\\scripts\\deliver.bat'
-            
-            
-            /* echo '${params.BUILD_NAME}'
-            bat  'java -jar target/application-1.0.jar' */
+
          }
       }
       

@@ -21,7 +21,7 @@ pipeline {
          }
          
          steps {
-            echo 'Delivering app for deployment'
+            echo 'delivering app for deployment'
             sh 'scp ./target/application-1.0.jar appuser@appserver:/apps/'
             sh 'ssh appuser@appserver "nohup java -jar /apps/application-1.0.jar  &"'
             

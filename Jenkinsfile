@@ -2,9 +2,6 @@
 pipeline {
    agent any
    
-   parameters {
-      string(name: 'BUILD_NAME', defaultValue: currentBuild.name)
-   }
    
    stages {
       stage('Build') {
@@ -25,7 +22,7 @@ pipeline {
          }
          steps {
             echo 'Deploying stage'
-            echo 'App buildName ${BUILD_NAME}'
+            echo 'App buildName ${env.currentBuild.name}'
             //  bat  'java -jar target/${currentBuild.name}.war --httpPort=8082'
          }
       }

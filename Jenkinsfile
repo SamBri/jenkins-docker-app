@@ -2,6 +2,10 @@
 pipeline {
    agent any
    
+   parameters {
+      string(name: 'BUILD_NAME', defaultValue: currentBuild.name, description: 'build name')
+   }
+   
    
    stages {
       stage('Build') {
@@ -20,9 +24,7 @@ pipeline {
                currentBuild.result == null || currentBuild.result == 'SUCCESS'
             }
          }
-         parameters {
-            string(name: 'BUILD_NAME', defaultValue: currentBuild.name, description: 'build name')
-         }
+         
          steps {
             echo 'Deploying stage'
             echo '${BUILD_NAME}'

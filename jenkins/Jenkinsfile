@@ -34,7 +34,7 @@ pipeline {
             sh 'echo $NAME'
             sh 'echo $VERSION'
             
-            sh 'scp ./target/${NAME}-${VERSION}.jar appuser@192.168.0.190:/home/appuser/apps/'
+            sh 'scp ./target/$NAME-$VERSION.jar appuser@192.168.0.190:/home/appuser/apps/'
             sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/${NAME}-${VERSION}.jar > /dev/null 2>&1 &"'
          }
          

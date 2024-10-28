@@ -29,8 +29,7 @@ pipeline {
             script: 'mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
             )}"""
             // mvn -q -DforceStdout help:evaluate -Dexpression=project.name
-            VERSION =  """${
-            sh(
+            VERSION =  """${sh(
             returnStatus: true,
             script:'mvn -q -DforceStdout help:evaluate -Dexpression=project.version'
             )}"""

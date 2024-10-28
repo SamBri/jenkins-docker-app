@@ -21,11 +21,10 @@ pipeline {
          }
          
          steps {
-            echo 'Deliver stage'
+            echo 'Deploying stage'
             
-            //
-            bat 'cd jenkins'
-            bat 'deliver.bat'
+            //run script
+            bat '.\\jenkins\\scripts\\deliver.bat'
             
             
             /* echo '${params.BUILD_NAME}'

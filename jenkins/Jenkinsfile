@@ -23,7 +23,7 @@ pipeline {
          steps {
             echo 'Deploying stage'
             // run bat file
-            bat '.\\jenkins\\scripts\\deliver.bat'
+          //  bat '.\\jenkins\\scripts\\deliver.bat'
 
          }
       }

@@ -24,7 +24,8 @@ pipeline {
             echo 'Deploying stage'
             
             //run script
-            bat '/jenkins/scripts/deliver.bat'
+            bat 'cd /jenkins/scripts'
+            bat 'deliver.bat'
             
             
             /* echo '${params.BUILD_NAME}'

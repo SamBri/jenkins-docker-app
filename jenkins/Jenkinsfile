@@ -25,6 +25,8 @@ pipeline {
             echo 'delivering app for deployment.'
             sh 'scp ./target/application-1.0.jar appuser@192.168.0.190:/home/appuser/apps/'
             sh 'ssh appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/application-1.0.jar  &"'
+            sh 'exit'
+            
             
             
          }
@@ -32,5 +34,4 @@ pipeline {
       
    }
    
-   }
-   
+}

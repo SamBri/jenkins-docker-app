@@ -22,7 +22,7 @@ pipeline {
          
          steps {
             echo 'delivering app for deployment'
-            sh 'scp ./target/application-1.0.jar appuser@192.168.0.190:/apps/'
+            sh 'scp -i /.ssh/id_rsa ./target/application-1.0.jar appuser@192.168.0.190:/apps/'
             sh 'ssh appuser@192.168.0.190 "nohup java -jar /apps/application-1.0.jar  &"'
             
             

@@ -2,16 +2,11 @@
 pipeline {
    agent any
    
-   parameters {
-      string(name: 'BUILD_NAME', defaultValue: currentBuild.projectName, description: 'project name ')
-   }
-   
    
    stages {
       stage('Build') {
          steps {
             echo 'Building stage'
-            //   bat 'mvn clean' // no clean stage
             bat 'mvn compile'
             bat 'mvn package'
             
@@ -27,8 +22,8 @@ pipeline {
          
          steps {
             echo 'Deploying stage'
-            echo '${params.BUILD_NAME}'
-            bat  'java -jar target/application-1.0.jar'
+          /* echo '${params.BUILD_NAME}'
+            bat  'java -jar target/application-1.0.jar' */
          }
       }
       

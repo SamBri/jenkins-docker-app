@@ -20,8 +20,12 @@ pipeline {
                currentBuild.result == null || currentBuild.result == 'SUCCESS'
             }
          }
+         parameters {
+            string(name: 'BUILD_NAME', defaultValue: currentBuild.name, description: 'build name')
+         }
          steps {
             echo 'Deploying stage'
+            echo '${BUILD_NAME}'
             bat  'java -jar target/application-1.0.jar'
          }
       }

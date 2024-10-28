@@ -35,7 +35,7 @@ pipeline {
          
          // jenkins over ssh --
          steps {
-           // sh 'printenv'
+            sh 'printenv'
             sh 'echo $NAME'
             sh 'echo $VERSION'
             echo 'delivering app for deployment.'

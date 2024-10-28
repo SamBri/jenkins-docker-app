@@ -22,7 +22,7 @@ pipeline {
          }
          steps {
             echo 'Deploying stage'
-            echo 'App buildName ${env.currentBuild.name}'
+            echo 'App buildName  ${currentBuild.name}'
             //  bat  'java -jar target/${currentBuild.name}.war --httpPort=8082'
          }
       }

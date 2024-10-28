@@ -22,8 +22,6 @@ pipeline {
          
          steps {
             echo 'Deploying stage'
-            
-            //run script on 
             bat '.\\jenkins\\scripts\\deliver.bat'
 
          }

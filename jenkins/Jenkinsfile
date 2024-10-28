@@ -24,7 +24,7 @@ pipeline {
             echo 'Deliver stage'
             
             //
-            bat 'cd /jenkins'
+            bat 'cd jenkins'
             bat 'deliver.bat'
             
             

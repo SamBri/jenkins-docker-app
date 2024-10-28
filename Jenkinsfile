@@ -21,7 +21,9 @@ pipeline {
          }
          steps {
             echo 'Deploying stage'
-            bat  'java -jar target/${currentBuild.name}.war --httpPort=8082'
+            def buildName = currentBuild.name
+            echo 'App buildName ${buildName}'
+          //  bat  'java -jar target/${currentBuild.name}.war --httpPort=8082'
          }
       }
       

@@ -23,17 +23,19 @@ pipeline {
          }
          
          environment {
-            DEBUG_FLAGS = '-g'
-            NAME = 'mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
+            //    DEBUG_FLAGS = '-g'
+            NAME = '''${sh(`mvn -q -DforceStdout help:evaluate -Dexpression=project.name`)}'''
+            //  NAME = ' sh(mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
             //  sh 'set NAME=`mvn -q -DforceStdout help:evaluate -Dexpression=project.name`'
-            VERSION = 'mvn -q -DforceStdout help:evaluate -Dexpression=project.version'
+            VERSION =  '''${sh(`mvn -q -DforceStdout help:evaluate -Dexpression=project.version`)}'''
+            
             // get version
             //sh'set VERSION=`mvn -q -DforceStdout help:evaluate -Dexpression=project.version`'
          }
          
          // jenkins over ssh --
          steps {
-            sh 'printenv'
+           // sh 'printenv'
             sh 'echo $NAME'
             sh 'echo $VERSION'
             echo 'delivering app for deployment.'

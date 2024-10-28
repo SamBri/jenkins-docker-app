@@ -27,12 +27,14 @@ pipeline {
             NAME = sh '''
             set +x
             mvn -q -DforceStdout help:evaluate -Dexpression=project.name
+            set -x
             '''
             //  NAME = ' sh(mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
             //  sh 'set NAME=`mvn -q -DforceStdout help:evaluate -Dexpression=project.name`'
             VERSION =  sh '''
             set +x
             mvn -q -DforceStdout help:evaluate -Dexpression=project.version
+            set -x
             '''
             
             // get version

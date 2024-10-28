@@ -3,7 +3,7 @@ pipeline {
    agent any
    
    parameters {
-      string(name: 'BUILD_NAME', defaultValue: currentBuild.name, description: 'build name')
+      string(name: 'BUILD_NAME', defaultValue: currentBuild.displayName, description: 'build name')
    }
    
    

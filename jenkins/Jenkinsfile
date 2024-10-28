@@ -9,10 +9,12 @@ pipeline {
             sh 'mvn compile'
             sh 'mvn package'
             
+            // get project name
             sh 'set -x'
             sh 'NAME=`mvn -q -DforceStdout help:evaluate -Dexpression=project.name`'
             sh 'set +x'
             
+            // get version
             sh'set -x'
             sh'VERSION=`mvn -q -DforceStdout help:evaluate -Dexpression=project.version`'
             sh 'set +x'

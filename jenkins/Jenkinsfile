@@ -16,14 +16,14 @@ pipeline {
       stage('Deploy') {
          when {
             expression {
-               currentBuild.result == null || currentBuild.result == 'SUCCESS'
+1               currentBuild.result == null || currentBuild.result == 'SUCCESS'
             }
          }
          
          steps {
             echo 'delivering app for deployment'
-            sh 'scp ./target/application-1.0.jar appuser@appserver:/apps/'
-            sh 'ssh appuser@appserver "nohup java -jar /apps/application-1.0.jar  &"'
+            sh 'scp ./target/application-1.0.jar appuser@192.168.0.190:/apps/'
+            sh 'ssh appuser@192.168.0.190 "nohup java -jar /apps/application-1.0.jar  &"'
             
             
          }
@@ -31,4 +31,3 @@ pipeline {
       
    }
    
-}

@@ -27,7 +27,7 @@ pipeline {
          
          steps {
             echo 'Deploying stage'
-            echo '${BUILD_NAME}'
+            echo '${params.BUILD_NAME}'
             bat  'java -jar target/application-1.0.jar'
          }
       }

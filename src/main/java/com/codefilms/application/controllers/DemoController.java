@@ -22,7 +22,7 @@ public class DemoController {
 		
 		return new ResponseEntity<String>(
 				new JSONObject()
-				.put("message", "Simon Peter")
+				.put("message", "Simon")
 				.put("status", "success")
 				.put("timestamp", LocalDateTime.now())
 				.put("requestId", UUID.randomUUID().toString())

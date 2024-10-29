@@ -47,6 +47,7 @@ pipeline {
       sh 'printenv'
       sh 'echo $NAME'
       sh 'echo $VERSION'
+      sh 'echo ${PID}'
       echo 'delivering app for deployment.'
       echo 'remove old build'
       sh 'ssh  appuser@192.168.0.190 "rm -rf /home/appuser/apps/$NAME-$VERSION.jar"'

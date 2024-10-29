@@ -2,14 +2,14 @@
 pipeline {
    agent any
    
-   parameters {
-      string(name:'PID', defaultValue: '$2', description: 'java pid number')
+      parameters{
+       string(name:'PID', defaultValue: '$2', description: 'java pid number')
    }
    
    stages {
       stage('Build') {
          steps {
-            echo 'Building stage'
+            echo 'Building stage'     
             sh 'mvn clean package'
             
             
@@ -29,20 +29,18 @@ pipeline {
             returnStdout:true,
             script: 'mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
             )
-         }
-         """
+         }"""
          // mvn -q -DforceStdout help:evaluate -Dexpression=project.name
          VERSION =  """${sh(
          returnStdout: true,
          script:'mvn -q -DforceStdout help:evaluate -Dexpression=project.version'
          )
-      }
-      """
+      }"""
       
    }
    
-   
-   
+
+
    
    // jenkins over ssh --
    steps {
@@ -54,10 +52,7 @@ pipeline {
       sh 'ssh  appuser@192.168.0.190 "rm -rf /home/appuser/apps/$NAME-$VERSION.jar"'
       sh 'scp ./target/$NAME-$VERSION.jar appuser@192.168.0.190:/home/appuser/apps/'
       echo '@@ kill running java process @@'
-      sh 'lsof -i | grep "java" > PID.txt && awk {
-         print ${PID}
-      }
-      PID.txt | xargs kill -9'
+      sh 'lsof -i | grep "java" > PID.txt && awk {print ${PID}} PID.txt | xargs kill -9'
       sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.jar > /dev/null 2>&1 &"'
    }
    

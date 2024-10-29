@@ -5,9 +5,9 @@ pipeline {
    stages {
       stage('Build') {
          steps {
-            echo 'Building stage'
-            sh 'mvn compile'
-            sh 'mvn package'
+            echo 'Building stage'     
+            sh 'mvn clean package'
+            
             
          }
       }
@@ -25,13 +25,15 @@ pipeline {
             returnStdout:true,
             script: 'mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
             )
-         }"""
+         }
+         """
          // mvn -q -DforceStdout help:evaluate -Dexpression=project.name
          VERSION =  """${sh(
          returnStdout: true,
          script:'mvn -q -DforceStdout help:evaluate -Dexpression=project.version'
          )
-      }"""
+      }
+      """
       
    }
    

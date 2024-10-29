@@ -43,8 +43,8 @@ pipeline {
       echo 'delivering app for deployment.'
       echo 'remove old build'
       sh 'ssh  appuser@192.168.0.190 "rm -rf /home/appuser/apps/$NAME-$VERSION.jar"'
-     // sh 'scp ./target/$NAME-$VERSION.jar appuser@192.168.0.190:/home/appuser/apps/'
-     // sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.jar > /dev/null 2>&1 &"'
+      sh 'scp ./target/$NAME-$VERSION.jar appuser@192.168.0.190:/home/appuser/apps/'
+      sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.jar > /dev/null 2>&1 &"'
    }
    
    

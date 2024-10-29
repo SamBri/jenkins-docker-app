@@ -20,18 +20,18 @@ pipeline {
          }
          
          environment {
+            //    DEBUG_FLAGS = '-g'
             NAME = """${sh(
             returnStdout:true,
             script: 'mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
             )
-         }
-         """
+         }"""
+         // mvn -q -DforceStdout help:evaluate -Dexpression=project.name
          VERSION =  """${sh(
          returnStdout: true,
          script:'mvn -q -DforceStdout help:evaluate -Dexpression=project.version'
          )
-      }
-      """
+      }"""
       
    }
    

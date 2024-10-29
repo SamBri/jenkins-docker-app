@@ -3,7 +3,7 @@ pipeline {
    agent any
    
     parameters{
-    //   string(name:'PID', defaultValue: '$2', description: 'java pid number')
+       string(name:'PID', defaultValue: '$2', description: 'java pid number')
        string(name:'PRINT',defaultValue: "'{print \$2}'", description:'print')
    } 
    
@@ -68,7 +68,7 @@ pipeline {
       // here.
       // && awk \'{print \'$2\'}\' PID.txt | xargs kill -9
       // .
-      sh 'ssh  appuser@192.168.0.190 "lsof -i:8082 | grep java > PID.txt && awk ${params.PRINT} PID.txt | xargs kill -9"'
+      sh 'ssh  appuser@192.168.0.190 "lsof -i:8082 | grep java > PID.txt && awk ${PRINT} PID.txt | xargs kill -9"'
       echo '@@ starting java app @@'
      // sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.jar > /dev/null 2>&1 &"'
    }

@@ -56,7 +56,7 @@ pipeline {
       echo '@@ kill running java process @@'
      // sh("lsof -i | grep java > PID.txt && awk '{print \$2}' PID.txt | xargs kill -9")
       // test lsof
-      sh "lsof -i:8082"
+      sh "lsof -i | grep 8082"
       // > PID.txt && awk '{print \$2}' PID.txt"
      /*sh '''
       lsof -i | grep "java" > PID.txt && awk '{print $2}' PID.txt | xargs kill -9

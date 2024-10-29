@@ -48,6 +48,7 @@ pipeline {
       sh 'printenv'
       sh 'echo $NAME'
       sh 'echo $VERSION'
+      sh 'echo ${PRINT}'
        sh 'echo ${PID}' // :(
       echo 'delivering app for deployment.'
       echo '@@ remove old build'
@@ -67,7 +68,7 @@ pipeline {
       // here.
       // && awk \'{print \'$2\'}\' PID.txt | xargs kill -9
       // .
-      sh 'ssh  appuser@192.168.0.190 "lsof -i:8082 | grep java > PID.txt && awk \'${PRINT}\' PID.txt | xargs kill -9"'
+      sh 'ssh  appuser@192.168.0.190 "lsof -i:8082 | grep java > PID.txt && awk ${PRINT} PID.txt | xargs kill -9"'
       echo '@@ starting java app @@'
      // sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.jar > /dev/null 2>&1 &"'
    }

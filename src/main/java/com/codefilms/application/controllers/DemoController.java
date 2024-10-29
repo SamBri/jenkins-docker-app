@@ -1,6 +1,7 @@
 package com.codefilms.application.controllers;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ public class DemoController {
 				new JSONObject()
 				.put("message", "Hello World")
 				.put("timestamp", LocalDateTime.now())
+				.put("requestId", UUID.randomUUID().toString())
 				.toString(), 
 				HttpStatus.OK);
 	}

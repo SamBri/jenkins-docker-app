@@ -19,7 +19,12 @@ public class DemoController {
 	@GetMapping(value="/greetings",produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sayHello() {
 		
-		return new ResponseEntity<String>(new JSONObject().put("greetings", "Hi, :: " + LocalDateTime.now()).toString(), HttpStatus.OK);
+		return new ResponseEntity<String>(
+				new JSONObject()
+				.put("message", "Hello World")
+				.put("timestamp", LocalDateTime.now())
+				.toString(), 
+				HttpStatus.OK);
 	}
 	
 	

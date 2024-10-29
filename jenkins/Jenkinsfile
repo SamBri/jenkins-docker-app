@@ -61,6 +61,7 @@ pipeline {
      // > /dev/null 2>&1 &
      // with param ..
      // use double quote
+     // add kill
       sh "ssh  appuser@192.168.0.190 lsof -i:8082 > PID.txt && awk '{print ${PID}}' PID.txt | xargs kill -9"
       echo '@@ starting java app @@'
      // sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.jar > /dev/null 2>&1 &"'

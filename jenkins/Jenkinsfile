@@ -16,7 +16,7 @@ pipeline {
          }
       }
       
-      // there is docker
+      // there is docker..
        stage('Containerize') {
          steps {
             echo 'Containerization stage'

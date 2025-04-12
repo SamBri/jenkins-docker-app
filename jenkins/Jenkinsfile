@@ -17,9 +17,9 @@ pipeline {
          steps {
             echo 'Containerization stage'
             // get the dockerfile     
-            sh 'docker build . -t codefilmsplc/jenkins-docker-app:alpha'
+            sh 'sudo docker build . -t codefilmsplc/jenkins-docker-app:alpha'
             //send the image to the hub
-            sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
+            sh 'sudo docker image push codefilmsplc/jenkins-docker-app:alpha'
                         
          }
       }

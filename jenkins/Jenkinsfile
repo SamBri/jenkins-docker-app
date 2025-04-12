@@ -2,12 +2,7 @@
 // Author:CodeFilmsPLC
 pipeline {
    agent any
-   
-    parameters{
-       string(name:'PID', defaultValue: '$2', description: 'java pid number')
-       string(name:'PRINT',defaultValue: "'{print \$2}'", description:'print')
-   } 
-   
+
    stages {
       stage('Build') {
          steps {

@@ -18,9 +18,9 @@ pipeline {
             echo 'Containerization stage'
             // get the dockerfile 
             // allow root user to build    
-            sh '-S docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
+            sh 'S docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
             //send the image to the hub
-            sh '-S docker image push codefilmsplc/jenkins-docker-app:alpha'
+            sh 'S docker image push codefilmsplc/jenkins-docker-app:alpha'
                         
          }
       }

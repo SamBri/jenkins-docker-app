@@ -7,7 +7,7 @@ MAINTAINER codefilmsplc
 
 
 # move the jar file into the vos.
-COPY target/jenkins-docker-app jenkins-docker-app.jar
+COPY target/jenkins-docker-app-1.1.jar jenkins-docker-app-1.1.jar
 
 # start in the vos.
-ENTRYPOINT ["java","-jar","jenkins-docker-app.jar"]
+ENTRYPOINT ["java","-jar","jjenkins-docker-app-1.1.jar"]

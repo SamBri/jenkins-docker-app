@@ -17,13 +17,20 @@ pipeline {
          steps {
             echo 'Containerization stage'
             // get the dockerfile
-            // run docker user   
+            // run docker user
             sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
+            
+            //login to docker
+            sh 'docker login -u "codefilmsplc" -p "_i^5(njkt3$UYZ(" docker.io'
+            
             //send the image to the hub
             sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
             
          }
+         
+         
       }
+      
       
       
       

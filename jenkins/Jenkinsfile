@@ -18,10 +18,32 @@ pipeline {
             echo 'Containerization stage'
             // get the dockerfile
             // run docker user
+            echo 'building docker image'
             sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
             
             //login to docker
+            echo 'logging to docker hub'
             sh 'docker login -u "\"wearecodefilms@gmail.com\"" -p "\"devPwd2024!"\" docker.io'
+            
+            //send the image to the hub
+            echo 'pushing docker image to cloud'
+            sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
+            
+         }
+         
+         
+      }
+      
+      
+      stage('Deployment') {
+         steps {
+            echo 'Deployment stage'
+           
+            // get the dockerfile
+            echo 'log into legacy server for deployment'
+           
+            // log onto the legacy server
+            sh 'ssh appuser@192.168.18.106'
             
             //send the image to the hub
             sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
@@ -30,7 +52,6 @@ pipeline {
          
          
       }
-      
       
       
       

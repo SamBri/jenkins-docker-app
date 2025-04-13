@@ -1,41 +1,44 @@
 // Jenkinsfile (Declarative Pipeline)
 // Author:CodeFilmsPLC
-// Docker + Jenkins 
+// Docker + Jenkins
 pipeline {
    agent any
-
+   
    stages {
       stage('Build') {
          steps {
-            echo 'Building stage'     
-            sh 'mvn clean package'            
+            echo 'Building stage'
+            sh 'mvn clean package'
          }
       }
       
       // there is docker..
-       stage('Containerize') {
+      stage('Containerize') {
          steps {
             echo 'Containerization stage'
-            // get the dockerfile 
-            // run docker user  
+            // get the dockerfile
+            // run docker user
+            sh 'printenv'
+            sh 'whereis docker'
             
-            sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
+            
+            //     sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
             //send the image to the hub
-            sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
-                        
+            //    sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
+            
          }
       }
       
-
-
-stage('End') {
-   steps {
-   //   echo 'done with deployment'
-    //  sh 'echo "done"'
-      sh 'exit'
+      
+      
+      stage('End') {
+         steps {
+            //   echo 'done with deployment'
+            //  sh 'echo "done"'
+            sh 'exit'
+         }
+      }
+      
    }
-}
-
-}
-
+   
 }

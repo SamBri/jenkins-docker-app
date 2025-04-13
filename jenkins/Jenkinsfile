@@ -21,7 +21,7 @@ pipeline {
             sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
             
             //login to docker
-            sh 'docker login -u "\"wearecodefilms@gmail.com\"" -p "\"_i^5(njkt3$UYZ(\"" docker.io'
+            sh 'docker login -u "\"wearecodefilms@gmail.com\"" -p "\"devPwd2024!"\" docker.io'
             
             //send the image to the hub
             sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'

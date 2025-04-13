@@ -19,6 +19,9 @@ pipeline {
             // get the dockerfile
             // run docker user
             sh 'printenv'
+            
+            sh 'whoami'
+            
             sh 'whereis docker'
             
             

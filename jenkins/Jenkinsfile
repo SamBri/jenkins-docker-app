@@ -40,10 +40,10 @@ pipeline {
             echo 'Deployment stage'
             
             // get the dockerfile
-            echo 'log into legacy server for deployment'
+            echo '@@ log into legacy server for deployment'
             
             // log onto the legacy server
-            echo 'log into legacy server for deployment'
+            echo '@@ log into legacy server for deployment'
             sh 'ssh appuser@192.168.125.186 "docker pull codefilmsplc/jenkins-docker-app:alpha"'
             
             

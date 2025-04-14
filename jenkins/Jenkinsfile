@@ -42,7 +42,7 @@ pipeline {
             echo 'log into legacy server for deployment'
             // log onto the legacy server  
             sh 'ssh appuser@192.168.125.186 "echo 1"'
-            //send the image to the hub
+            //send the image to the hub 
             sh 'docker pull codefilmsplc/jenkins-docker-app:alpha'
             
          }

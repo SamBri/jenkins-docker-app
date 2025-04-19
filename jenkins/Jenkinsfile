@@ -25,9 +25,9 @@ pipeline {
             // run docker user
             sh('echo building docker image')
             sh('echo ${dockerTagName}')
-            sh('echo $%BUILD_ID%')
+            sh('echo %BUILD_ID%')
             
-            sh('docker build . -t  codefilmsplc/jenkins-docker-app:${dockerTagName}-$%BUILD_ID%')
+            sh('docker build . -t  codefilmsplc/jenkins-docker-app:${dockerTagName}-%BUILD_ID%')
             
             //login to docker
             sh('echo logging to docker hub')
@@ -35,7 +35,7 @@ pipeline {
             
             //send the image to the hub
             sh('echo pushing docker image to cloud')
-            sh('docker image push codefilmsplc/jenkins-docker-app:${dockerTagName}-$%BUILD_ID%')
+            sh('docker image push codefilmsplc/jenkins-docker-app:${dockerTagName}-%BUILD_ID%')
             
          }
          
@@ -49,9 +49,9 @@ pipeline {
             // get the dockerfile --
             sh('echo log into legacy server for deployment')
             // log onto the legacy server
-            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.74.112 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-$%BUILD_ID% > /dev/null 2>&1 &"')
+            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.74.112 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-%BUILD_ID% > /dev/null 2>&1 &"')
             //send the image to the hub
-            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.74.112 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:${dockerTagName}-$%BUILD_ID% > /dev/null 2>&1 &"')
+            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.74.112 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:${dockerTagName}-%BUILD_ID% > /dev/null 2>&1 &"')
             
          }
          

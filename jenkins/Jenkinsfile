@@ -27,7 +27,7 @@ pipeline {
             
             //send the image to the hub
             echo 'pushing docker image to cloud'
-            sh 'docker image push codefilmsplc/jenkins-docker-app:alpha'
+            sh 'docker image push codefilmsplc/jenkins-docker-app:alpha-v1'
             
          }
          

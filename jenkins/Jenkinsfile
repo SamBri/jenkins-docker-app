@@ -24,6 +24,9 @@ pipeline {
             // get the dockerfile
             // run docker user
             echo 'building docker image'
+            echo '${params.dockerTagName}'
+            echo '${env.BUILD_ID}'
+            
             sh 'docker build . -t  codefilmsplc/jenkins-docker-app:${params.dockerTagName}-${env.BUILD_ID}'
             
             //login to docker

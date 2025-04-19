@@ -29,7 +29,7 @@ pipeline {
             
             sh('docker build . -t  codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER')
             
-            //login to docker      
+            //login to docker       
             sh('echo logging to docker hub')
             sh('docker login -u "\"wearecodefilms@gmail.com\"" -p "\"devPwd2024!"\" docker.io')
             

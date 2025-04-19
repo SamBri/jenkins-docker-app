@@ -40,7 +40,7 @@ pipeline {
             echo 'Deployment stage'
             // get the dockerfile --  
             echo 'log into legacy server for deployment' 
-            // log onto the legacy server     
+            // log onto the legacy server      
             sh 'ssh -o StrictHostKeyChecking=no appuser@192.168.81.167 "docker pull codefilmsplc/jenkins-docker-app:alpha > /dev/null 2>&1 &"'
             //send the image to the hub 
             sh 'ssh -o StrictHostKeyChecking=no appuser@192.168.81.167 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:alpha > /dev/null 2>&1 &"'

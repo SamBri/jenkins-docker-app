@@ -19,7 +19,7 @@ pipeline {
             // get the dockerfile
             // run docker user
             echo 'building docker image'
-            sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha'
+            sh 'docker build . -t  codefilmsplc/jenkins-docker-app:alpha-v1'
             
             //login to docker
             echo 'logging to docker hub'

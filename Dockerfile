@@ -10,4 +10,4 @@ MAINTAINER codefilmsplc
 COPY target/jenkins-docker-app-1.1.jar jenkins-docker-app-1.1.jar
 
 # start in the vos.
-ENTRYPOINT ["java","-jar","jjenkins-docker-app-1.1.jar"]
+ENTRYPOINT ["java","-jar","jenkins-docker-app-1.1.jar"]

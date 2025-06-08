@@ -18,6 +18,7 @@ pipeline {
       }
       // fix build stage with database server allowing remote host connection.
       
+      
       //run test.
       stage('Test') {
          steps {

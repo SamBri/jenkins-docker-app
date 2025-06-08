@@ -54,16 +54,13 @@ public class ApplicationController {
 
 	}
 	
-	
-	//author: bobby
-	// say hi when the vps endpoint is called.
+	// author : bobby
 	@GetMapping(value = "/vps", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sendTextFromVps() {
 
 		log.info("api endpoint called from " + System.getProperty("os.name"));
 		
-		
-		apiTextMessage = "hello world, endpoint is from vps :)";
+		apiTextMessage = "hello world from vps :)";
 
 		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")
 				.put("timestamp", LocalDateTime.now()).put("requestId", UUID.randomUUID().toString()).toString(),
@@ -71,8 +68,7 @@ public class ApplicationController {
 
 	}
 	
-	
-	
+		
 	
 	@PostMapping(path = "/users", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	ResponseEntity<User> createUser(@RequestBody User userDto) {

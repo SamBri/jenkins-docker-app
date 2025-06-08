@@ -54,16 +54,12 @@ public class ApplicationController {
 
 	}
 	
-	
-	// author : ninja
-	// date : 8th June 2025.
-	// let's have a public method that says hello to users
 	@GetMapping(value = "/vps", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sayHelloFromVPS() {
 
 		log.info("api endpoint called from " + System.getProperty("os.name"));
 		
-		apiTextMessage = "hello world from vps";
+		apiTextMessage = "hello, endpoint called from vps :)";
 
 		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")
 				.put("timestamp", LocalDateTime.now()).put("requestId", UUID.randomUUID().toString()).toString(),
@@ -71,19 +67,8 @@ public class ApplicationController {
 
 	}
 	
-//	@GetMapping(value = "/github-webhook/", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<String> sayHelloFromVPS() {
-//
-//		log.info("api endpoint called from " + System.getProperty("os.name"));
-//		
-//		apiTextMessage = "hello world from vps";
-//
-//		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")
-//				.put("timestamp", LocalDateTime.now()).put("requestId", UUID.randomUUID().toString()).toString(),
-//				HttpStatus.OK);
-//
-//	}
-
+	
+	
 	@PostMapping(path = "/users", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	ResponseEntity<User> createUser(@RequestBody User userDto) {
 

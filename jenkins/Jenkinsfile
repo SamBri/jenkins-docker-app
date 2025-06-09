@@ -15,9 +15,9 @@ pipeline {
             sh('echo Building stage')
             sh('mvn clean package')
          }
-      }  
-      // fix with db user ceation , 
-      // make dbuser talk to MySQL server from .195   
+      }
+      // fix with db user ceation ,
+      // make dbuser talk to MySQL server from .195
       
       
       //run test.
@@ -58,7 +58,10 @@ pipeline {
             sh('echo Deployment stage')
             // get the dockerfile --
             sh('echo log into legacy server for deployment')
-            // log onto the legacy server
+            
+            // log onto the vps server
+            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.0.195 "docker ps a | grep jenkins-docker-app  > CID.txt && awk ${PRINT} CID.txt | xargs docker container stop /dev/null 2>&1"')
+            
             sh('ssh -o StrictHostKeyChecking=no appuser@192.168.0.195 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
             //send the image to the hub
             sh('ssh -o StrictHostKeyChecking=no appuser@192.168.0.195 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')

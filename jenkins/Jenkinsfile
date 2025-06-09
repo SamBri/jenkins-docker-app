@@ -16,7 +16,8 @@ pipeline {
             sh('mvn clean package')
          }
       }  
-      // fix with db user creation    
+      // fix with db user ceation , 
+      // make dbuser talk to MySQL server from .195   
       
       //run test.
       stage('Test') {

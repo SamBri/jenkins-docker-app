@@ -63,7 +63,7 @@ public class ApplicationController {
 		log.info("api endpoint called from " + System.getProperty("os.name"));
 		log.info("api endpoint called from host " + System.getenv("HOSTNAME"));
 
-		apiTextMessage = "hello world from vps";
+		apiTextMessage = "hello world from vps :)";
 		
 		
 		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")

@@ -60,7 +60,7 @@ pipeline {
             sh('echo log into legacy server for deployment')
             
             // log onto the vps server 
-            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.0.195 "docker ps a | grep jenkins-docker-app  > CID.txt && awk ${PRINT} CID.txt | xargs docker container stop /dev/null 2>&1"')
+            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.0.195 "docker ps | grep jenkins-docker-app  > CID.txt && awk ${PRINT} CID.txt | xargs docker container stop /dev/null 2>&1"')
             
             sh('ssh -o StrictHostKeyChecking=no appuser@192.168.0.195 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
             //send the image to the hub

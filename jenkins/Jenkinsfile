@@ -15,7 +15,8 @@ pipeline {
             sh('echo Building stage')
             sh('mvn clean package')
          }
-      }      
+      }  
+      // fix with db user creation    
       
       //run test.
       stage('Test') {

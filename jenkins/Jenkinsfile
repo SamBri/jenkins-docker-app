@@ -7,6 +7,7 @@ pipeline {
    // make the docker tag dynamic
    parameters {
       string(name: 'dockerTagName', defaultValue: 'alpha', description: 'docker tag id name')
+      string(name:'PRINT',defaultValue: "'{print \$1}'", description:'print')  
    }
    
    stages {

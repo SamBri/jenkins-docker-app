@@ -57,7 +57,7 @@ pipeline {
       stage('Deployment') {
          steps {
             sh('echo Deployment stage')
-            // get the dockerfile --
+            // get the dockerfile --  
             sh('echo log into legacy server for deployment')
             
             // log onto the vps server 

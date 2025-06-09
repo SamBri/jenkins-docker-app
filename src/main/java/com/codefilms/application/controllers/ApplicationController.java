@@ -66,6 +66,7 @@ public class ApplicationController {
 		apiTextMessage = "hello world from vps :)";
 		
 		
+		
 		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")
 				.put("timestamp", LocalDateTime.now()).put("requestId", UUID.randomUUID().toString()).toString(),
 				HttpStatus.OK);

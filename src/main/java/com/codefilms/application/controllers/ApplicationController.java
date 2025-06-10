@@ -54,25 +54,20 @@ public class ApplicationController {
 
 	}
 	
-	// author : Bob
-	// vps endpoint
 	// let's have a public method that says hello to users
 	@GetMapping(value = "/vps", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sendTextFromVps() {
 
 		log.info("api endpoint called from " + System.getProperty("os.name"));
-		log.info("api endpoint called from host " + System.getenv("HOSTNAME"));
+		
+		apiTextMessage = "hello world from vps :) , the time is {TIME}".replace("{TIME}", LocalDateTime.now().toString()) ;
 
-		apiTextMessage = "hello world from vps :)";
-		
-		
-		
 		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")
 				.put("timestamp", LocalDateTime.now()).put("requestId", UUID.randomUUID().toString()).toString(),
 				HttpStatus.OK);
 
 	}
-
+	
 	
 
 	@PostMapping(path = "/users", consumes = { MediaType.APPLICATION_JSON_VALUE })

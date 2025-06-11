@@ -1,10 +1,6 @@
 package com.codefilms.application.controllers;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.Base64;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,15 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.codefilms.application.entity.User;
 import com.codefilms.application.service.impl.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -57,11 +50,17 @@ public class ApplicationController {
 	
 	// author: bobby.
 	@GetMapping(value = "/yarn", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> yarn() {
+	public ResponseEntity<String> yarn(HttpServletRequest request) {
+
+		
+		log.info("hoorray! inside yarn endpoint : {} " + request.getRequestURL());
 
 		log.info("api endpoint called from " + System.getProperty("os.name"));
 		
 		apiTextMessage = "yarn :: {dateTime}".replace("{dateTime}", LocalDateTime.now().toString());
+
+		
+		log.info("yarn text message " + apiTextMessage);
 
 		return new ResponseEntity<String>(new JSONObject().put("message", apiTextMessage).put("status", "success")
 				.put("timestamp", LocalDateTime.now()).put("requestId", UUID.randomUUID().toString()).toString(),

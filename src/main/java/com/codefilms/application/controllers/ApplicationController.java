@@ -29,7 +29,6 @@ import com.codefilms.application.service.impl.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.experimental.var;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController

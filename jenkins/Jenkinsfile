@@ -17,6 +17,14 @@ pipeline {
          }
       }
       
+      //run test.
+      stage('Test') {
+         steps {
+            sh('echo Running testing..');
+            sh('mvn -Dtest=JenkinsDockerApplicationImplementationTests.java test');
+         }
+      }
+      
       // there is docker..
       stage('Containerize') {
          steps {
@@ -24,12 +32,9 @@ pipeline {
             // get the dockerfile
             // run docker user
             sh('echo building docker image')
-            sh('echo ${dockerTagName}')
-            sh('echo $BUILD_NUMBER')
-             
             sh('docker build . -t  codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER')
-             
-            //login to docker       
+            
+            //login to docker
             sh('echo logging to docker hub')
             sh('docker login -u "\"wearecodefilms@gmail.com\"" -p "\"devPwd2024!"\" docker.io')
             
@@ -43,15 +48,18 @@ pipeline {
       }
       
       
+      
+      
       stage('Deployment') {
          steps {
             sh('echo Deployment stage')
             // get the dockerfile --
             sh('echo log into legacy server for deployment')
             // log onto the legacy server
-            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.74.112 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
+            // make the commit for ssh interaction
+            sh('ssh appuser@192.168.0.195 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
             //send the image to the hub
-            sh('ssh -o StrictHostKeyChecking=no appuser@192.168.74.112 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
+            sh('ssh appuser@192.168.0.195 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
             
          }
          

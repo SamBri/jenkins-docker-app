@@ -55,10 +55,14 @@ public class ApplicationController {
 	}
 	
 	
+	// remove public keys
 	@GetMapping(value = "/sshFix", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> sshFix() {
 
 		log.info("api endpoint called from " + System.getProperty("os.name"));
+		
+		log.info("@@@ inside sshFix ");
+
 		
 		apiTextMessage = "echo: sshFix"; // echo    
 

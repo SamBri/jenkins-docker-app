@@ -56,7 +56,7 @@ pipeline {
             // get the dockerfile --
             sh('echo log into legacy server for deployment')
             // log onto the legacy server
-            // make the commit for ssh interaction
+            // make the commit for ssh interaction 
             sh('ssh appuser@192.168.0.195 "docker pull codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')
             //send the image to the hub
             sh('ssh appuser@192.168.0.195 "docker run -p 8082:8082 codefilmsplc/jenkins-docker-app:${dockerTagName}-$BUILD_NUMBER > /dev/null 2>&1 &"')

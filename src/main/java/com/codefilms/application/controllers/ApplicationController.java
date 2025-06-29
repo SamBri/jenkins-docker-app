@@ -57,7 +57,7 @@ public class ApplicationController {
 
 		log.info("api endpoint called from " + System.getProperty("os.name"));
 		
-		apiTextMessage = "yarn :: {dateTime}".replace("{dateTime}", LocalDateTime.now().toString());
+		apiTextMessage = "yarn has no ssh strictHostKey checking :: {dateTime}".replace("{dateTime}", LocalDateTime.now().toString());
 
 		
 		log.info("yarn text message " + apiTextMessage);
